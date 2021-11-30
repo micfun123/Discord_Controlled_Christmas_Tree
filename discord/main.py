@@ -1,9 +1,19 @@
 
+
 import time
 import board
 import neopixel
 import discord
 import random
+
+from discord.ext import commands
+
+client = commands.Bot(command_prefix = "#", presences = True, members = True, guilds=True)
+
+@client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Game(name = "#help"))
+    print("We have power")
 
 
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
@@ -72,34 +82,33 @@ def green():
      pixels.fill((0, 255, 0))
      pixels.show()
 
-from discord.ext import commands
 
-client = commands.Bot(command_prefix = "#", presences = True, members = True, guilds=True)
 
-@client.event
-async def on_ready():
-    await client.change_presence(activity=discord.Game(name = "#help"))
-    print("We have power")
 
 
 @client.command()
 async def red(ctx):
-    await ctx.sent("It is red")
+    await ctx.send("It is red")
     red()
     print("change") 
 
 
 @client.command()
 async def blue(ctx):
-    await ctx.sent("It is blue")
+    await ctx.send("It is blue")
     blue()
     print("change") 
 
 @client.command()
 async def green(ctx):
-    await ctx.sent("It is green")
+    await ctx.send("It is green")
     green()
     print("change") 
+
+@client.command()
+async def Alive(ctx):
+    await ctx.send("Alive")
+   
 
 
 
