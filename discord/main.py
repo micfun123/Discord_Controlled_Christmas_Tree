@@ -86,18 +86,20 @@ async def on_ready():
 async def red(ctx):
     await ctx.sent("It is red")
     red()
+    print("change") 
 
 
 @client.command()
 async def blue(ctx):
     await ctx.sent("It is blue")
     blue()
-
+    print("change") 
 
 @client.command()
 async def green(ctx):
     await ctx.sent("It is green")
     green()
+    print("change") 
 
 
 
