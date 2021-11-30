@@ -17,4 +17,4 @@ pixels = neopixel.NeoPixel(
     pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER
 )
 
-pixels.fill((0, 000, 0))
+pixels.fill((250, 250, 250))
