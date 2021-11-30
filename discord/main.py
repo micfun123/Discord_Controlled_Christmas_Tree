@@ -72,7 +72,7 @@ async def red(ctx):
     await ctx.send("It is red")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((255, 0, 0))
+    pixels.fill((0, 255, 0))
     pixels.show()
     print("change") 
 
@@ -91,10 +91,19 @@ async def green(ctx):
     await ctx.send("It is green")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((0, 255, 0))
+    pixels.fill((255, 0, 0))
     pixels.show()
     print("change") 
-
+    
+@client.command()
+async def light(ctx):
+    await ctx.send("It is green")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((content))
+    pixels.show()
+    print("change") 
+    
 @client.command()
 async def Alive(ctx):
     await ctx.send("Alive")
