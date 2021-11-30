@@ -82,13 +82,17 @@ async def red(ctx):
 
 
 @client.command()
-async def red(ctx):
-    await ctx.sent("It is red")
+async def blue(ctx):
+    await ctx.sent("It is blue")
     blue()
 
 
 @client.command()
-async def red(ctx):
-    await ctx.sent("It is red")
+async def green(ctx):
+    await ctx.sent("It is green")
     green()
 
+
+
+
+client.run('TOKEN')
