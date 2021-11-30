@@ -64,45 +64,35 @@ def rainbow_cycle(wait):
         pixels.show()
         time.sleep(wait)
 
-def red(): 
-     pixels.fill((0, 0, 0))
-     pixels.show()
-     pixels.fill((255, 0, 0))
-     pixels.show()
-
-def blue(): 
-     pixels.fill((0, 0, 0))
-     pixels.show()
-     pixels.fill((0, 0, 255))
-     pixels.show()
-
-def green(): 
-     pixels.fill((0, 0, 0))
-     pixels.show()
-     pixels.fill((0, 255, 0))
-     pixels.show()
-
-
 
 
 
 @client.command()
 async def red(ctx):
     await ctx.send("It is red")
-    red()
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((255, 0, 0))
+    pixels.show()
     print("change") 
 
 
 @client.command()
 async def blue(ctx):
     await ctx.send("It is blue")
-    blue()
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((0, 0, 255))
+    pixels.show()
     print("change") 
 
 @client.command()
 async def green(ctx):
     await ctx.send("It is green")
-    green()
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((0, 255, 0))
+    pixels.show()
     print("change") 
 
 @client.command()
