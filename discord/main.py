@@ -62,7 +62,7 @@ def rainbow_cycle(wait):
             pixel_index = (i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
         pixels.show()
-        
+        time.sleep(wait)
 
 
 
@@ -96,10 +96,18 @@ async def green(ctx):
     print("change") 
 
 @client.command()
+async def white(ctx):
+    await ctx.send("It is white")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((255, 250, 250))
+    pixels.show()
+    print("change")     
+
+@client.command()
 async def rainbow(ctx):
-    while True:
-        rainbow_cycle(0.001)
     await ctx.send("It is a rainbow_cycle")
+    rainbow_cycle(0.001)
     print("change") 
     
 @client.command()
