@@ -96,8 +96,8 @@ async def green(ctx):
     print("change") 
     
 @client.command()
-async def light(ctx):
-    await ctx.send("It is green")
+async def light(ctx, *, content:str):
+    await ctx.send("It is light")
     pixels.fill((0, 0, 0))
     pixels.show()
     pixels.fill((content))
