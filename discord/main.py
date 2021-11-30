@@ -94,9 +94,17 @@ async def green(ctx):
     pixels.fill((255, 0, 0))
     pixels.show()
     print("change") 
+
+@client.command()
+async def rainbow(ctx):
+    await ctx.send("It is a rainbow_cycle")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    rainbow_cycle(0.001)
+    print("change") 
     
 @client.command()
-async def light(ctx, *, content:float):
+async def light(ctx, *, content:str):
     await ctx.send("It is light")
     pixels.fill((0, 0, 0))
     pixels.show()
