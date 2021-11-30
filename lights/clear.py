@@ -9,7 +9,7 @@ import neopixel
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 30
+num_pixels = 50
 
 ORDER = neopixel.GRB
 
@@ -23,4 +23,5 @@ while True:
     pixels.fill((255, 0, 0))
     pixels.show()
     pixels.fill((250, 250, 250))
+    pixels.show()
     time.sleep(1)
