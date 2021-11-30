@@ -17,4 +17,10 @@ pixels = neopixel.NeoPixel(
     pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER
 )
 
-pixels.fill((250, 250, 250))
+
+while True:
+    # Comment this line out if you have RGBW/GRBW NeoPixels
+    pixels.fill((255, 0, 0))
+    pixels.show()
+    pixels.fill((250, 250, 250))
+    time.sleep(1)
