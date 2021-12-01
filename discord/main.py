@@ -14,6 +14,8 @@ client = commands.Bot(command_prefix = "#", presences = True, members = True, gu
 async def on_ready():
     await client.change_presence(activity=discord.Game(name = "#help"))
     print("We have power")
+    pixels.fill((0, 0, 0))
+    pixels.show()
 
 
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
