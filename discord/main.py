@@ -111,11 +111,11 @@ async def rainbow(ctx):
     print("change") 
     
 @client.command()
-async def light(ctx, *, content:str):
+async def light(ctx,x,y,z):
     await ctx.send("It is light")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((content))
+    pixels.fill((x, y, z))
     pixels.show()
     print("change") 
     
