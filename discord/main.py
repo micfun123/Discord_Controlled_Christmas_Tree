@@ -132,6 +132,15 @@ async def light(ctx,x: int,y: int,z: int):
     print("change")
     print(x,y,z) 
     
+    
+@client.command(help = "n = LED number xyz are RGB values")
+async def pixel(ctx,n: int,x: int,y: int,z: int):
+    await ctx.send("It is light")
+    pixels[n] = (x, y, z)
+    pixels.show()
+    print("change")
+    print(x,y,z)
+    
 @client.command()
 async def Alive(ctx):
     await ctx.send("Alive")
