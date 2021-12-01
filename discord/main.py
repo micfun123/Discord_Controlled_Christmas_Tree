@@ -102,8 +102,18 @@ async def white(ctx):
     pixels.show()
     pixels.fill((255, 250, 250))
     pixels.show()
-    print("change")     
-
+    print("change")
+    
+@client.command()
+async def pink(ctx):
+    await ctx.send("It is Pink")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    pixels.fill((20, 250, 660))
+    pixels.show()
+    print("change")   
+    
+    
 @client.command()
 async def rainbow(ctx):
     await ctx.send("It is a rainbow_cycle")
