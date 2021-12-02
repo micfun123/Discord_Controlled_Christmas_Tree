@@ -111,7 +111,7 @@ async def pink(ctx):
     await ctx.send("It is Pink")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((20, 250, 660))
+    pixels.fill((20, 250, 60))
     pixels.show()
     print("change")   
     
