@@ -121,7 +121,7 @@ async def cyan(ctx):
     await ctx.send("It is white")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((255 0 255))
+    pixels.fill((255, 0, 255))
     pixels.show()
     print("change")    
     
@@ -130,9 +130,10 @@ async def shouldRun(msg):
         return False
     return True
 
-@bot.command()
+@client.command()
 async def rainbow(ctx):
     while shouldRun(ctx.message):
+        changeColors()
     
 @client.command()
 async def light(ctx,x: int,y: int,z: int):
