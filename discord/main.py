@@ -8,7 +8,7 @@ import random
 
 from discord.ext import commands
 
-client = commands.Bot(command_prefix = "#", presences = True, members = True, guilds=True)
+client = commands.Bot(command_prefix = "%", presences = True, members = True, guilds=True)
 
 @client.event
 async def on_ready():
