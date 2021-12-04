@@ -125,15 +125,10 @@ async def cyan(ctx):
     pixels.show()
     print("change")    
     
-async def shouldRun(msg):
-    if msg.reactions != []:
-        return False
-    return True
 
 @client.command()
 async def rainbow(ctx):
-    while shouldRun(ctx.message):
-        changeColors()
+    rainbow_cycle(0.001)
     
 @client.command()
 async def light(ctx,x: int,y: int,z: int):
