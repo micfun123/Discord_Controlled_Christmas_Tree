@@ -128,6 +128,7 @@ async def cyan(ctx):
 
 @client.command()
 async def rainbow(ctx):
+    await ctx.send("It is rainbow")
     rainbow_cycle(0.001)
     
 @client.command()
