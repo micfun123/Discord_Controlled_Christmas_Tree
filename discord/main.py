@@ -118,7 +118,7 @@ async def pink(ctx):
     
 @client.command()
 async def cyan(ctx):
-    await ctx.send("It is white")
+    await ctx.send("It is cyan")
     pixels.fill((0, 0, 0))
     pixels.show()
     pixels.fill((255, 0, 255))
