@@ -1,10 +1,11 @@
-
-
 import time
 import board
 import neopixel
 import discord
 import random
+import threading  # Import the threading module
+
+rainbow_running = False
 
 from discord.ext import commands
 
@@ -67,10 +68,30 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 
+# Define the function to run the rainbow cycle
+def run_rainbow():
+    global rainbow_running
+    rainbow_running = True
+    while rainbow_running:
+        rainbow_cycle(0.001)
+    rainbow_running = False
 
+# Start the rainbow cycle in a separate thread
+def start_rainbow_cycle():
+    global rainbow_thread
+    rainbow_thread = threading.Thread(target=run_rainbow)
+    rainbow_thread.start()
+
+# Stop the rainbow cycle
+def stop_rainbow_cycle():
+    global rainbow_running
+    if rainbow_running:
+        rainbow_running = False
+        rainbow_thread.join()
 
 @client.command()
 async def red(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is red")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -81,6 +102,7 @@ async def red(ctx):
 
 @client.command()
 async def blue(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is blue")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -90,6 +112,7 @@ async def blue(ctx):
 
 @client.command()
 async def green(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is green")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -99,6 +122,7 @@ async def green(ctx):
 
 @client.command()
 async def white(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is white")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -108,6 +132,7 @@ async def white(ctx):
     
 @client.command()
 async def pink(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is Pink")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -118,6 +143,7 @@ async def pink(ctx):
     
 @client.command()
 async def cyan(ctx):
+    stop_rainbow_cycle()
     await ctx.send("It is cyan")
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -125,14 +151,16 @@ async def cyan(ctx):
     pixels.show()
     print("change")    
     
-
 @client.command()
 async def rainbow(ctx):
-    await ctx.send("It is rainbow")
-    rainbow_cycle(0.001)
-    
+    global rainbow_running
+    if not rainbow_running:
+        start_rainbow_cycle()
+        await ctx.send("Rainbow effect started.")
+
 @client.command()
 async def light(ctx,x: int,y: int,z: int):
+    stop_rainbow_cycle()
     await ctx.send("It is light")
     pixels.fill((0, 0, 0))
     pixels.show()
