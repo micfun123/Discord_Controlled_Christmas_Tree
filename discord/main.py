@@ -9,7 +9,9 @@ rainbow_running = False
 
 from discord.ext import commands
 
-client = commands.Bot(command_prefix = "%", presences = True, members = True, guilds=True)
+intents = discord.Intents.default()
+
+client = commands.Bot(command_prefix = "%", presences = True, members = True, guilds=True, intents=intents)
 
 @client.event
 async def on_ready():
