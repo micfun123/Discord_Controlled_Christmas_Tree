@@ -120,9 +120,9 @@ def fire_effect():
     for i in range(bottem_sectoon, top_section):
         pixels[i] = (random.randint(50, 165), 255 , 0)
     for i in range(top_section, num_pixels):
-        pixels[i] = (random.randint(190, 255), random.randint(190, 255), 0)
+        pixels[i] = (random.randint(190, 255), random.randint(190, 255), random.randint(0, 50))
     pixels.show()
-    time.sleep(0.3)
+    time.sleep(random.uniform(0.05, 0.2))
 
 
 def set_light(r, g, b):
