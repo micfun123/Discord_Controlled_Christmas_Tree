@@ -6,6 +6,7 @@ import random
 import threading  # Import the threading module
 
 rainbow_running = False
+fire_running = False
 
 from discord.ext import commands
 
@@ -92,100 +93,116 @@ def stop_rainbow_cycle():
         rainbow_running = False
         rainbow_thread.join()
 
-@client.command()
-async def red(ctx):
+# Define the function to run the fire effect
+def run_fire():
+    global fire_running
+    fire_running = True
+    while fire_running:
+        fire_effect()
+    fire_running = False
+
+def start_fire_effect():
+    global fire_thread
+    fire_thread = threading.Thread(target=run_fire)
+    fire_thread.start()
+
+def stop_fire_effect():
+    global fire_running
+    if fire_running:
+        fire_running = False
+        fire_thread.join()
+
+def fire_effect():
+    bottem_sectoon = num_pixels // 3
+    top_section = num_pixels - bottem_sectoon
+    for i in range(bottem_sectoon):
+        pixels[i] = (0, random.randint(200,255), 0)
+    for i in range(bottem_sectoon, top_section):
+        pixels[i] = (random.randint(50, 165), 255 , 0)
+    for i in range(top_section, num_pixels):
+        pixels[i] = (random.randint(190, 255), random.randint(190, 255), 0)
+    pixels.show()
+    time.sleep(0.3)
+
+
+def set_light(r, g, b):
+    stop_fire_effect()
     stop_rainbow_cycle()
-    await ctx.send("It is red")
     pixels.fill((0, 0, 0))
     pixels.show()
-    pixels.fill((0, 255, 0))
+    pixels.fill((g, r, b))
     pixels.show()
-    print("change") 
+    print("change")
+
+@client.command()
+async def red(ctx):
+    await ctx.send("It is red")
+    set_light(255, 0, 0)
 
 
 @client.command()
 async def blue(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is blue")
-    pixels.fill((0, 0, 0))
-    pixels.show()
     pixels.fill((0, 0, 255))
-    pixels.show()
-    print("change") 
 
 @client.command()
 async def green(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is green")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    pixels.fill((255, 0, 0))
-    pixels.show()
-    print("change") 
+    set_light(0, 255, 0)
 
 @client.command()
 async def white(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is white")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    pixels.fill((255, 250, 250))
-    pixels.show()
-    print("change")
+    set_light(255, 255, 255)
     
 @client.command()
 async def pink(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is Pink")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    pixels.fill((20, 250, 60))
-    pixels.show()
-    print("change")   
+    set_light(20, 20, 60)
     
     
 @client.command()
 async def cyan(ctx):
-    stop_rainbow_cycle()
     await ctx.send("It is cyan")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    pixels.fill((255, 0, 255))
-    pixels.show()
-    print("change")    
+    set_light(0, 255, 255)
+
     
 @client.command()
 async def rainbow(ctx):
+    stop_fire_effect()
     global rainbow_running
     if not rainbow_running:
         start_rainbow_cycle()
         await ctx.send("Rainbow effect started.")
 
-@client.command()
-async def light(ctx,x: int,y: int,z: int):
-    stop_rainbow_cycle()
+@client.command(help= "lets use custom colors r = red g = green b = blue")
+async def light(ctx,r: int,g: int,b: int):
     await ctx.send("It is light")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    pixels.fill((x, y, z))
-    pixels.show()
-    print("change")
-    print(x,y,z) 
+    set_light(r, g, b)
     
     
-@client.command(help = "n = LED number xyz are RGB values")
-async def pixel(ctx,n: int,x: int,y: int,z: int):
+@client.command(help = "n = LED number then r = red g = green b = blue")
+async def led(ctx,n: int,r: int,g: int,b: int):
     await ctx.send("It is light")
-    pixels[n] = (x, y, z)
+    pixels[n] = (g, r, b)
     pixels.show()
-    print("change")
-    print(x,y,z)
+
     
 @client.command()
 async def Alive(ctx):
     await ctx.send("Alive")
    
-
+@client.command()
+async def fire(ctx):
+    stop_rainbow_cycle()
+    global fire_running
+    if not fire_running:
+        start_fire_effect()
+        await ctx.send("Fire effect started.")
 
 
 
