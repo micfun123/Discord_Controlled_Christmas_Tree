@@ -144,7 +144,7 @@ async def red(ctx):
 async def blue(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is blue")
-    pixels.fill((0, 0, 255))
+    set_light(0, 0, 255)
 
 @client.command()
 async def green(ctx):
@@ -162,8 +162,7 @@ async def white(ctx):
 async def pink(ctx):
     stop_rainbow_cycle()
     await ctx.send("It is Pink")
-    set_light(20, 20, 60)
-    
+    set_light(255, 105, 180)
     
 @client.command()
 async def cyan(ctx):
