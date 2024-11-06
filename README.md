@@ -19,6 +19,9 @@ Control LED lights directly from Discord! This bot allows you to change colors w
 - **Rainbow Pattern**  
   Use `%rainbow` to display a rainbow pattern across the entire setup.
 
+- **Fire**
+  Use `fire` for a fire effect to climb up the tree.
+
 ## Wiring Guide
 
 Refer to the wiring guide below to set up your hardware:
