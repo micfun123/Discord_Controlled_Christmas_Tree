@@ -3,7 +3,7 @@ import board
 import neopixel
 import discord
 import random
-import threading  # Import the threading module
+import threading 
 
 rainbow_running = False
 fire_running = False
@@ -41,7 +41,6 @@ pixels = neopixel.NeoPixel(
 )
 
 
-#wheel for cycles 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
     # The colours are a transition r - g - b - back to r.
@@ -86,14 +85,14 @@ def start_rainbow_cycle():
     rainbow_thread = threading.Thread(target=run_rainbow)
     rainbow_thread.start()
 
-# Stop the rainbow cycle
+
 def stop_rainbow_cycle():
     global rainbow_running
     if rainbow_running:
         rainbow_running = False
         rainbow_thread.join()
 
-# Define the function to run the fire effect
+
 def run_fire():
     global fire_running
     fire_running = True
